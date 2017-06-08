@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Dashboard</title>
+    <meta name="description" content="RunMyCode Online Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date
+      ga('create', 'UA-100606537-1', 'auto')
+      ga('send', 'pageview')
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
+    <script>
+      let user = localStorage.getItem('runmycode')
+      if(!user) location.assign('/') // nothing for you here
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <header class="grid grid--center">
+        <div class="grid-cell u-1of4">
+          <h2><a href="/">RunMyCode</a></h2>
+        </div>
+        <div class="grid-cell">
+          <div class="menu">
+            <ul id="top-menu" class="right">
+              <li><a href="faq.html">FAQ</a></li>
+              <li><a href="about.html">About</a></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+  
+      <main class="dashboard">
+        <h3>Dashboard</h3>
+        <p>Your API Key</p>
+        <p id="key"><input id="show-key" class="btn" type="button" value="Show Key"></p>
+        <p id="usage"><input id="get-usage" class="btn" type="button" value="Get Usage"></p>
+        <p>NOTE: Usage data might be <a href="faq.html#usage-delay">delayed</a> by few minutes to hours</p>
+        <div class="menu">
+          <ul>
+            <li><input id="logout" class="btn btn-warn" type="button" value="Log Out" title="Clears data stored in browser. You won't be able to use CodeSheet."></li>
+            <li><input id="delete-account" class="btn btn-danger" type="button" value="Delete Account" title="Deletes your account. You won't be able to use CodeSheet as well as browser extensions."></li>
+          </ul>
+        </div>
+      </main>
+
+      <footer>
+        <p>&copy; <a target="_blank" href="https://github.com/shatgupt">Shatrughn Gupta</a></p>
+      </footer>
+    </div>
+
+    <script>
+      const $ = s => document.querySelector(s)
+      if (user) {
+        user = JSON.parse(user)
+        $('#top-menu').insertAdjacentHTML('afterbegin', `<li><a href="dashboard.html">${user.name}</a></li><li><a href="codesheet.html">CodeSheet</a></li>`)
+      }
+
+      $('#show-key').addEventListener('click', (e) => {
+        $('#key').textContent = user.key
+      })
+      $('#logout').addEventListener('click', (e) => {
+        localStorage.removeItem('runmycode')
+        location.assign('/')
+      })
+      $('#delete-account').addEventListener('click', (e) => {
+        alert('Coming Soon')
+      })
+
+      const usage = $('#usage')
+      const usageUrl = `https://api.runmycode.online/keyusage?id=${user.id}&name=${encodeURIComponent(user.email)}`
+      $('#get-usage').addEventListener('click', (e) => {
+        usage.classList.remove('error')
+        usage.innerHTML = '<strong>Getting Usage...</strong>'
+        fetch(usageUrl, {
+          headers: {'x-api-key': user.key}
+        })
+        .then(res => res.json())
+        .then(resp => {
+          if (!resp.error) {
+            const usageArr = resp.usage
+            if (usageArr.length !== 0) {
+              // Usage format is monthlyUsage[dailyUsage[usedThatDay, totalRemaining]]
+              let totalUsage = 0
+              let remaining = usageArr[usageArr.length-1][1]
+              for(let day of usageArr) totalUsage += day[0]
+              usage.textContent = `You have used ${totalUsage} runs of your monthly ${totalUsage+remaining} limit`
+            } else {
+              console.warn('empty usage response', resp)
+              usage.innerHTML = 'No usage data available yet. <strong><a href="codesheet.html">May be run some code?</a></strong>'
+            }
+          } else {
+            console.error('Error:', resp)
+            usage.classList.add('error')
+            usage.textContent = `Error: ${resp.error}`
+          }
+        })
+        .catch((error) => {
+          console.error('Error:', error)
+          usage.classList.add('error')
+          usage.textContent = 'Some error happened. Please try again later.' // what else do I know? :/
+        })
+      })
+    </script>
+  </body>
+</html>

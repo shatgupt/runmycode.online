@@ -1,0 +1,21 @@
+{
+  "name": "runmycode.online",
+  "version": "1.0.0",
+  "description": "RunMyCode Online website",
+  "author": "Shatrughn Gupta",
+  "license": "MIT",
+  "devDependencies": {
+    "standard": "^10.0.2"
+  },
+  "standard": {
+    "globals": [
+      "location",
+      "crypto",
+      "$",
+      "fetch",
+      "localStorage",
+      "CodeMirror",
+      "user"
+    ]
+  }
+}

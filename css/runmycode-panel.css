@@ -1,0 +1,140 @@
+#runmycode-runner {
+  color: #565d64;
+  display: none;
+  position: fixed;
+  top: 150px;
+  /* set these so Chrome doesn't return 'auto' from getComputedStyle */
+  z-index: 999;
+  box-shadow: 5px 5px 10px #888;
+}
+
+#runmycode-runner .panel {
+  background-color: #fff;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  margin-bottom: 0;
+}
+
+#runmycode-runner .panel-default {
+  border-color: #e5e5e5;
+}
+
+#runmycode-runner .panel-group {
+  margin-bottom: 0;
+}
+
+#runmycode-runner .panel-group .panel+.panel {
+  margin-top: 5px;
+}
+
+#runmycode-runner .panel-heading {
+  padding: 6px 16px;
+  border-bottom: 1px solid #e5e5e5;
+  border-top-right-radius: 1px;
+  border-top-left-radius: 1px;
+  cursor: pointer;
+  line-height: 27px;
+  background-color: #f5f5f5;
+}
+
+#runmycode-runner-handle.panel-heading {
+  cursor: move;
+}
+
+#runmycode-runner .panel-title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+#runmycode-runner .panel-body {
+  padding: 15px;
+}
+
+#runmycode-runner .panel-runner .panel-body {
+  padding: 0;
+}
+
+#runmycode-runner .close {
+  float: right;
+  font-size: 21px;
+  font-weight: bold;
+  font-family: inherit;
+  line-height: 1;
+  opacity: 0.3;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+#runmycode-runner .close:hover, #runmycode-runner .close:focus {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+#runmycode-runner .collapse {
+  display: none;
+}
+
+#runmycode-runner .collapse.in {
+  display: block;
+}
+
+#runmycode-runner .btn {
+  border: 1px solid #e5e5e5;
+  font-size: 14px;
+  user-select: none;
+  border-radius: 3px;
+  padding: 10px 0;
+  font-weight: bold;
+  font-family: inherit;
+  cursor: pointer;
+  background-image: none;
+}
+
+#runmycode-runner .btn-block {
+  display: block;
+  width: 100%;
+  margin: 0 0 15px 0;
+}
+
+#runmycode-runner .btn-warning {
+  background-color: #fc9403;
+  color: #fff;
+}
+
+#runmycode-runner .btn-warning:hover, #runmycode-runner .btn-warning:focus {
+  background-color: #de7e00;
+}
+
+#runmycode-runner .btn-warning:active {
+  background-color: #c26700;
+}
+
+#runmycode:disabled {
+  color: rgba(36, 41, 46, 0.4);
+  background-color: rgba(252, 148, 3, 0.5);
+  box-shadow: none;
+  pointer-events: none !important;
+  cursor: not-allowed;
+}
+
+#runmycode-runner textarea {
+  font-family: "Monaco", "Menlo", "Ubuntu Mono", "Consolas", "source-code-pro", monospace;
+  padding: 6px 10px;
+  width: 100%;
+  display: block;
+  box-sizing: border-box;
+  border: 1px solid #e5e5e5;
+  font-size: 14px;
+  /* line-height: 20px; */
+  color: inherit;
+}
+
+/*#runmycode-runner textarea[readonly] {
+  background-color: #f9f9f9;
+}*/
+
+#runmycode-runner textarea.error {
+  color: red;
+}

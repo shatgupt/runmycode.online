@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>FAQ</title>
+    <meta name="description" content="Frequently Asked Questions about RunMyCode Online">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date
+      ga('create', 'UA-100606537-1', 'auto')
+      ga('send', 'pageview')
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
+  </head>
+  <body>
+    <div class="container">
+      <header class="grid grid--center">
+        <div class="grid-cell u-1of4">
+          <h2><a href="/">RunMyCode</a></h2>
+        </div>
+        <div class="grid-cell">
+          <div class="menu">
+            <ul id="top-menu" class="right">
+              <li><a href="faq.html">FAQ</a></li>
+              <li><a href="about.html">About</a></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+  
+      <main>
+        <h3>Frequently Asked Questions</h3>
+
+        <h4 id="auth"><a href="#auth">#</a> Why do I need to authenticate?</h4>
+        <p>RunMyCode Online is a free service by a single developer. To restrict abuse, a key is required to use it. Your key will be generated once you authenticate yourself using any of the auth providers on the home page. This service only needs access to name and email and once the key is generated, you can immediately revoke RunMyCode Online's access from the auth provider. <a href="#privacy-policy">Concerned about your data?</a></p>
+
+        <h4 id="key-use"><a href="#key-use">#</a> How is the key used?</h4>
+        <p>Your key is used to meter your usage. It is automatically used in <a href="codesheet.html">CodeSheet</a> and for browser extensions, you will need to provide it in extension options.</p>
+
+        <h4 id="limits"><a href="#limits">#</a> What are the usage limits?</h4>
+        <p>1000 runs per month.</p>
+
+        <h4 id="privacy-policy"><a href="#privacy-policy">#</a> Privacy Policy OR How is my data used/stored?</h4>
+        <ul>
+          <li>Only your name and email are accessed from auth provider and stored</li>
+          <li>Name and email are used just to associate with a key</li>
+          <li>No mail will be sent to your email unless there is an abuse detected</li>
+          <li>No code run is stored unless there is an abuse detected</li>
+          <li>Some data might be collected by Google Analytics</li>
+          <li>Apart from the ones mentioned above, no other personal data is stored/used</li>
+          <li>You can delete your account from dashboard (coming soon)</li>
+          <li>Any more concerns? Please mail to: support at runmycode.online</li>
+        </ul>
+
+        <h4 id="supported-sites"><a href="#supported-sites">#</a> What are the supported sites for browser extension?</h4>
+        <ul>
+          <li><a href="faq.html">Github</a></li>
+          <li><a href="about.html">Gitlab</a></li>
+          <li><a href="about.html">Bitbucket</a></li>
+        </ul>
+
+        <h4 id="usage-delay"><a href="#usage-delay">#</a> Why delay in usage data?</h4>
+        <p>That is how AWS API Gateway reports it.</p>
+      </main>
+
+      <footer>
+        <p>&copy; <a target="_blank" href="https://github.com/shatgupt">Shatrughn Gupta</a></p>
+      </footer>
+    </div>
+
+    <script>
+      const $ = s => document.querySelector(s)
+      let user = localStorage.getItem('runmycode')
+      if (user) {
+        user = JSON.parse(user)
+        $('#top-menu').insertAdjacentHTML('afterbegin', `<li><a href="dashboard.html">${user.name}</a></li><li><a href="codesheet.html">CodeSheet</a></li>`)
+      }
+    </script>
+  </body>
+</html>
