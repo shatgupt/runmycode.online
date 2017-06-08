@@ -65,23 +65,25 @@ const langMap = {
   python3: 'python'
 }
 let langToLoad = langMap[lang] || lang
-
-const wrapper = $('#code-wrapper')
-wrapper.textContent = '' // remove Loading...
-
-const myCodeMirror = CodeMirror(wrapper, {
-  value: sampleCodes[lang],
-  mode: langToLoad,
-  lineNumbers: true,
-  viewportMargin: Infinity
-})
 const langLoaded = [langToLoad]
 
-// make them visible
+const wrapper = $('#code-wrapper')
 const langSelect = $('#language')
-langSelect.style.display = 'inline'
 const popUpRunnerBtn = $('#popup-runner')
-popUpRunnerBtn.style.display = 'inline'
+
+let myCodeMirror
+const initEditor = () => {
+  wrapper.textContent = '' // remove Loading...
+  myCodeMirror = CodeMirror(wrapper, {
+    value: sampleCodes[lang],
+    mode: langToLoad,
+    lineNumbers: true,
+    viewportMargin: Infinity
+  })
+  // make them visible
+  langSelect.style.display = 'inline'
+  popUpRunnerBtn.style.display = 'inline'
+}
 
 // update with new code
 const updateEditor = () => {
@@ -261,4 +263,7 @@ const initRunner = () => {
   })
 }
 
-initRunner()
+if (user) {
+  initEditor()
+  initRunner()
+}
