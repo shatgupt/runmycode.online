@@ -35,6 +35,10 @@
   cursor: pointer;
   line-height: 27px;
   background-color: #f5f5f5;
+  -webkit-user-select: none; /* Safari */
+      -moz-user-select: none; /* Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+          user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
 }
 
 #runmycode-runner-handle.panel-heading {
@@ -83,13 +87,16 @@
 #runmycode-runner .btn {
   border: 1px solid #e5e5e5;
   font-size: 14px;
-  user-select: none;
   border-radius: 3px;
   padding: 10px 0;
   font-weight: bold;
   font-family: inherit;
   cursor: pointer;
   background-image: none;
+  -webkit-user-select: none; /* Safari */
+      -moz-user-select: none; /* Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+          user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
 }
 
 #runmycode-runner .btn-block {
@@ -103,7 +110,7 @@
   color: #fff;
 }
 
-#runmycode-runner .btn-warning:hover, #runmycode-runner .btn-warning:focus {
+#runmycode-runner .btn-warning:hover {
   background-color: #de7e00;
 }
 
@@ -119,22 +126,31 @@
   cursor: not-allowed;
 }
 
-#runmycode-runner textarea {
+#runmycode-run-input, #runmycode-run-output {
   font-family: "Monaco", "Menlo", "Ubuntu Mono", "Consolas", "source-code-pro", monospace;
   padding: 6px 10px;
-  width: 100%;
+  min-width: 100%;
   display: block;
+  font-size: 14px;
+  color: inherit;
+  line-height: normal;
   box-sizing: border-box;
   border: 1px solid #e5e5e5;
-  font-size: 14px;
-  resize: both;
-  color: inherit;
 }
 
 /*#runmycode-runner textarea[readonly] {
   background-color: #f9f9f9;
 }*/
 
-#runmycode-runner textarea.error {
+#runmycode-runner .error {
   color: red;
+}
+
+#runmycode-run-input {
+  height: 40px;
+}
+
+#runmycode-run-output {
+  resize: both;
+  min-height: 90px;
 }
