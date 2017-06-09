@@ -158,7 +158,7 @@ const initRunner = () => {
             </div>
             <div id="output-panel" class="panel-collapse collapse in">
               <div class="panel-body">
-                <textarea id="runmycode-run-output" rows="4" placeholder="Output from Code" readonly="true"></textarea>
+                <textarea id="runmycode-run-output" rows="5" placeholder="Output from Code" readonly="true"></textarea>
               </div>
             </div>
           </div>
@@ -235,11 +235,16 @@ const initRunner = () => {
     .then(res => res.json())
     .then((resp) => {
       console.log('Run response', resp)
+      runOutput.classList.add('error')
       if (resp.status === 'Successful') {
+        runOutput.classList.remove('error')
         runOutput.value = resp.stdout || resp.stderr
+      } else if (resp.status === 'Failed' || resp.status === 'BadRequest') {
+        runOutput.value = `Failed: ${resp.error}${resp.stdout}` // stdout for php which puts error in stdout
+      } else if (resp.message === 'Forbidden') {
+        runOutput.value = 'Are you tinkering? You can do so here: https://github.com/shatgupt/runmycode.online'
       } else {
-        runOutput.classList.add('error')
-        runOutput.value = `Failed: ${resp.error}\n${resp.stdout}` // stdout for php which puts error in stdout
+        runOutput.value = 'Some error happened. Please try again later.' // what else do I know? :/
       }
       runBtn.disabled = false // enable run button
     })
@@ -247,7 +252,7 @@ const initRunner = () => {
       console.error('Error:', error)
       runOutput.classList.add('error')
       runOutput.value = 'Some error happened. Please try again later.' // what else do I know? :/
-      // run button is not enabled to prevent user from triggering this error again
+      runBtn.disabled = false
     })
   }
 
