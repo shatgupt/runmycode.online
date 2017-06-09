@@ -148,7 +148,7 @@ const initRunner = () => {
             </div>
             <div class="panel-collapse collapse">
               <div class="panel-body">
-                <textarea id="runmycode-run-input" placeholder="Command line input to Code" title="Special shell characters like & should be quoted"></textarea>
+                <input id="runmycode-run-input" placeholder="Command line input to Code" title="Special shell characters like & should be quoted" type="text">
               </div>
             </div>
           </div>
@@ -158,7 +158,7 @@ const initRunner = () => {
             </div>
             <div id="output-panel" class="panel-collapse collapse in">
               <div class="panel-body">
-                <textarea id="runmycode-run-output" rows="5" placeholder="Output from Code" readonly="true"></textarea>
+                <textarea id="runmycode-run-output" rows="4" placeholder="Output from Code" readonly="true"></textarea>
               </div>
             </div>
           </div>
