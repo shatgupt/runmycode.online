@@ -127,7 +127,7 @@
   box-sizing: border-box;
   border: 1px solid #e5e5e5;
   font-size: 14px;
-  /* line-height: 20px; */
+  resize: both;
   color: inherit;
 }
 
