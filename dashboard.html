@@ -46,7 +46,6 @@
         <div class="menu">
           <ul>
             <li><input id="logout" class="btn btn-warn" type="button" value="Log Out" title="Clears data stored in browser. You won't be able to use CodeSheet."></li>
-            <li><input id="delete-account" class="btn btn-danger" type="button" value="Delete Account" title="Deletes your account. You won't be able to use CodeSheet as well as browser extensions."></li>
           </ul>
         </div>
       </main>
@@ -69,9 +68,6 @@
       $('#logout').addEventListener('click', (e) => {
         localStorage.removeItem('runmycode')
         location.assign('/')
-      })
-      $('#delete-account').addEventListener('click', (e) => {
-        alert('Coming Soon')
       })
 
       const usage = $('#usage')
