@@ -1,6 +1,9 @@
 # RunMyCode Online Website
 
-> Source for [RunMyCode Online website](https://runmycode.online)
+> Source for [https://runmycode.online](https://runmycode.online)
+
+## Credits
+Icomoon.io for the icon.
 
 ## License
 [MIT](LICENSE)
