@@ -35,7 +35,7 @@
   
       <main class="home">
         <p>RunMyCode Online is an open source service to run code online from browsers</p>
-        <img id="howto-video" src="intro.png" width="748" height="398" title="Introduction to RunMyCode Online">
+        <video id="intro-video" src="runmycode-intro.mp4" poster="intro.png" title="Introduction to RunMyCode Online" width="748" height="398"></video>
 
         <div id="actions">
           <div class="menu">
@@ -67,6 +67,12 @@
 
         $('#actions').innerHTML = `<a href="dashboard.html" class="btn btn-dashboard">Dashboard</a>`
       }
+
+      $('#intro-video').addEventListener('click', (e) => {
+        const intro = e.target
+        intro.setAttribute('controls', 'true')
+        intro.paused ? intro.play() : intro.pause()
+      })
     </script>
     <script src="js/authenticator.js"></script>
   </body>

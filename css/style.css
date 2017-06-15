@@ -142,12 +142,13 @@ footer {
   background: #ff593d;
 }
 
-#howto-video {
+#intro-video {
   /*width: 748px;
-  height: 400px;*/
+  height: 398px;*/
   margin: 0 auto;
   display: block;
   border: 1px solid black;
+  cursor: pointer;
 }
 
 #extension-list {
