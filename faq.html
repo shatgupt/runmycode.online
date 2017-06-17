@@ -32,18 +32,36 @@
           </div>
         </div>
       </header>
-  
+
       <main>
         <h3>Frequently Asked Questions</h3>
+
+        <h4 id="why"><a href="#why">#</a> Why did you make this?</h4>
+        <p>RunMyCode Online has been primarily made for developers to quickly tinker with code. The aim is to enable developers to test a piece of code directly from browser without installing anything.<br>
+        Some use cases include:
+          <ul>
+            <li>For professors - <a href="https://github.com/blog/2376-how-to-grade-programming-assignments-on-github">Grading programming assignments</a> directly on Github in browser</li>
+            <li>For students - Reading, writing and even executing programming assignments all from Github in browser without worrying about installing compilers or git</li>
+            <li>For developers - Quickly run code you are browsing on Github</li>
+            <li>Run small piece of code online from a browser through <a href="codesheet.html">CodeSheet</a></li>
+          </ul>
+        </p>
+
+        <h4 id="api-use"><a href="#api-use">#</a> Can I use RunMyCode Online API in my own app?</h4>
+        <p>Yes, you can. But please do not use the hosted version(RunMyCode Online) in production or anything that can implode universe. It is not meant be. Also, there are time and network restrictions in RunMyCode Online. Since all code is open source, I would suggest to host the service yourself if you are going to use this heavily and don't want any limits.</p>
 
         <h4 id="auth"><a href="#auth">#</a> Why do I need to authenticate?</h4>
         <p>RunMyCode Online is a free service by a single developer. To restrict abuse, a key is required to use it. Your key will be generated once you authenticate yourself using any of the auth providers on the home page. This service only needs access to name and email and once the key is generated, you can immediately revoke RunMyCode Online's access from the auth provider. <a href="#privacy-policy">Concerned about your data?</a></p>
 
         <h4 id="key-use"><a href="#key-use">#</a> How is the key used?</h4>
-        <p>Your key is used to meter your usage. It is automatically used in <a href="codesheet.html">CodeSheet</a> and for browser extensions, you will need to provide it in extension options.</p>
+        <p>Your key is used to meter your usage. It is automatically used at <a href="codesheet.html">CodeSheet</a> and for browser extensions, you will need to provide it in extension options.</p>
 
-        <h4 id="limits"><a href="#limits">#</a> What are the usage limits?</h4>
-        <p>1000 runs per month.</p>
+        <h4 id="limits"><a href="#limits">#</a> What are the limits?</h4>
+        <ul>
+          <li>1000 runs per month</li>
+          <li>2 seconds time limit for each run</li>
+          <li>No internet access from code</li>
+        </ul>
 
         <h4 id="privacy-policy"><a href="#privacy-policy">#</a> Privacy Policy OR How is my data used/stored?</h4>
         <ul>
