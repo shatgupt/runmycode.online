@@ -1,6 +1,8 @@
-# RunMyCode Online Website
+# RunMyCode Online
 
-> Source for [https://runmycode.online](https://runmycode.online)
+> Source for [https://runmycode.online](https://runmycode.online) website
+
+![RunMyCode Online Introduction](http://i.imgur.com/0rhaYnT.gif)
 
 ## Browsers Supported
 Latest versions of Chrome, Firefox, Opera.
