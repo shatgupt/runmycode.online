@@ -75,7 +75,7 @@ const generateKey = (res) => {
       .then((r) => {
         // console.log('keygen response', r)
         localStorage.setItem('runmycode', JSON.stringify(r))
-        location.assign('dashboard.html')
+        location.assign('dashboard.html?first=1')
       })
       .catch((error) => {
         console.error('keygen Error:', error)

@@ -142,6 +142,11 @@ footer {
   background: #ff593d;
 }
 
+.btn:disabled {
+  background: #ddd;
+  cursor: default;
+}
+
 #extension-list {
   list-style: none;
   padding: 0;

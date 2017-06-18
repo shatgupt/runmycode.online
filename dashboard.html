@@ -36,7 +36,7 @@
           </div>
         </div>
       </header>
-  
+
       <main class="dashboard">
         <h3>Dashboard</h3>
         <p>Your API Key</p>
@@ -52,18 +52,26 @@
 
     <script>
       const $ = s => document.querySelector(s)
-      if (user) {
-        user = JSON.parse(user)
-        $('#top-menu').insertAdjacentHTML('afterbegin', `<li><a href="dashboard.html">${user.name}</a></li><li><a href="codesheet.html">CodeSheet</a></li>`)
-      }
+      // if user was not there, it would have been redirected from head
+      user = JSON.parse(user)
+      $('#top-menu').insertAdjacentHTML('afterbegin', `<li><a href="dashboard.html">${user.name}</a></li><li><a href="codesheet.html">CodeSheet</a></li>`)
 
-      $('#show-key').addEventListener('click', (e) => {
-        $('#key').textContent = user.key
-      })
+      $('#show-key').addEventListener('click', e => $('#key').textContent = user.key)
 
       const usage = $('#usage')
+      const getUsage = $('#get-usage')
+      // disable usage on first time till 30s to avoid getting 403 from APIG
+      if (location.search.indexOf('first=1') !== -1) {
+        getUsage.disabled = true
+        getUsage.setAttribute('title', 'Usage available only after 30 seconds of signup')
+        setTimeout(() => {
+          getUsage.disabled = false
+          getUsage.setAttribute('title', '')
+        }, 30000)
+      }
+
       const usageUrl = `https://api.runmycode.online/keyusage?id=${user.id}&name=${encodeURIComponent(user.email)}`
-      $('#get-usage').addEventListener('click', (e) => {
+      getUsage.addEventListener('click', (e) => {
         usage.classList.remove('error')
         usage.innerHTML = '<strong>Getting Usage...</strong>'
         fetch(usageUrl, {
