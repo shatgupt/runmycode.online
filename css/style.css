@@ -41,16 +41,8 @@ header a:hover, footer a:hover {
   text-decoration-color: grey;
 }
 
-.home, .dashboard {
-  text-align: center;
-}
-
 main {
   padding-bottom: 65px;   /* Height of the footer element + 10px padding */
-}
-
-main > h3, .page-title {
-  text-align: center;
 }
 
 footer {
