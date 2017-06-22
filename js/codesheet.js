@@ -43,8 +43,6 @@ const sampleCodes = {
   ].join('\n')
 }
 
-const $$ = s => document.querySelectorAll(s)
-
 // https://stackoverflow.com/a/39008859
 const injectScript = (src) => {
   return new Promise((resolve, reject) => {

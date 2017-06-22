@@ -26,6 +26,8 @@
         <div class="grid-cell">
           <div class="menu">
             <ul id="top-menu" class="right">
+              <li><a href="dashboard.html" class="hide-if-no-user" id="user-name">Dashboard</a></li>
+              <li><a href="codesheet.html" class="hide-if-no-user">CodeSheet</a></li>
               <li><a href="faq.html">FAQ</a></li>
             </ul>
           </div>
@@ -52,9 +54,9 @@
           </div>
         </div>
 
-        <div id="code-wrapper">Loading...</div>
+        <div id="code-wrapper"><h4 class="text-center">Loading...</h4></div>
 
-        <p style="text-align: center;">Install the browser extensions [<a target="_blank" href="https://chrome.google.com/webstore/detail/runmycode-online/iidcnkpdmnopbbkdmneglbelcefgfohf">Chrome</a>, <a target="_blank" href="https://addons.mozilla.org/en-US/firefox/addon/runmycode-online">Firefox</a>] to run code directly from <a href="https://github.com/shatgupt/runmycode-test/blob/master/ruby.rb">Github</a> or <a href="https://gitlab.com/shatgupt/runmycode-test/blob/master/ruby.rb">Gitlab</a></p>
+        <h4 class="hide-if-no-user text-center">Install the browser extensions [<a target="_blank" href="https://chrome.google.com/webstore/detail/runmycode-online/iidcnkpdmnopbbkdmneglbelcefgfohf">Chrome</a>, <a target="_blank" href="https://addons.mozilla.org/en-US/firefox/addon/runmycode-online">Firefox</a>] to run code directly from <a href="https://github.com/shatgupt/runmycode-test/blob/master/ruby.rb">Github</a> or <a href="https://gitlab.com/shatgupt/runmycode-test/blob/master/ruby.rb">Gitlab</a></h4>
       </main>
 
       <footer>
@@ -64,12 +66,14 @@
 
     <script>
       const $ = s => document.querySelector(s)
+      const $$ = s => document.querySelectorAll(s)
       let user = localStorage.getItem('runmycode')
       if (user) {
         user = JSON.parse(user)
-        $('#top-menu').insertAdjacentHTML('afterbegin', `<li><a href="dashboard.html">${user.name}</a></li><li><a href="codesheet.html">CodeSheet</a></li>`)
+        $('#user-name').textContent = user.name || 'Dashboard'
+        Array.from($$('.hide-if-no-user')).forEach(el => el.classList.remove('hide-if-no-user'))
       } else {
-        $('#code-wrapper').innerHTML = '<p style="text-align: center; font-weight: bold;">Please get a key by authenticating at <a href="/">homepage</a></p>'
+        $('#code-wrapper>h4').innerHTML = 'Please get a key by authenticating at <a href="/">homepage</a>'
       }
     </script>
     <script src="codemirror/lib/codemirror.js"></script>

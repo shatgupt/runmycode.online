@@ -28,6 +28,8 @@
         <div class="grid-cell">
           <div class="menu">
             <ul id="top-menu" class="right">
+              <li><a href="dashboard.html" class="hide-if-no-user" id="user-name">Dashboard</a></li>
+              <li><a href="codesheet.html" class="hide-if-no-user">CodeSheet</a></li>
               <li><a href="faq.html">FAQ</a></li>
             </ul>
           </div>
@@ -43,7 +45,7 @@
 
         <p>Your API Key</p>
         <p id="key"><input id="show-key" class="btn" type="button" value="Show Key"></p>
-        <p id="usage"><input id="get-usage" class="btn" type="button" value="Get Usage"></p>
+        <h4 id="usage"><input id="get-usage" class="btn" type="button" value="Get Usage"></h4>
         <p><strong>Note:</strong> Usage data might be <a href="faq.html#usage-delay">delayed</a> by few minutes to hours</p>
       </main>
 
@@ -54,9 +56,12 @@
 
     <script>
       const $ = s => document.querySelector(s)
-      // if user was not there, it would have been redirected from head
+      const $$ = s => document.querySelectorAll(s)
+      // if user was not there, it would have been already redirected from head
       user = JSON.parse(user)
-      $('#top-menu').insertAdjacentHTML('afterbegin', `<li><a href="dashboard.html">${user.name}</a></li><li><a href="codesheet.html">CodeSheet</a></li>`)
+      // User name instead of simple Dashboard
+      $('#user-name').textContent = user.name || 'Dashboard'
+      Array.from($$('.hide-if-no-user')).forEach(el => el.classList.remove('hide-if-no-user'))
 
       $('#show-key').addEventListener('click', e => $('#key').textContent = user.key)
 
@@ -78,7 +83,7 @@
       const usageUrl = `https://api.runmycode.online/keyusage?id=${user.id}&name=${encodeURIComponent(user.email)}`
       getUsage.addEventListener('click', (e) => {
         usage.classList.remove('error')
-        usage.innerHTML = '<strong>Getting Usage...</strong>'
+        usage.textContent = 'Getting Usage...'
         fetch(usageUrl, {
           headers: {'x-api-key': user.key}
         })
@@ -94,7 +99,7 @@
               usage.textContent = `You have used ${totalUsage} runs of your monthly ${totalUsage+remaining} limit`
             } else {
               console.warn('empty usage response', resp)
-              usage.innerHTML = 'No usage data available yet. <strong><a href="codesheet.html">May be run some code?</a></strong>'
+              usage.innerHTML = 'No usage data available yet. <a href="codesheet.html">May be run some code?</a>'
             }
           } else {
             console.error('Error:', resp)

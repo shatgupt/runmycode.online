@@ -24,6 +24,8 @@
         <div class="grid-cell">
           <div class="menu">
             <ul id="top-menu" class="right">
+              <li><a href="dashboard.html" class="hide-if-no-user" id="user-name">Dashboard</a></li>
+              <li><a href="codesheet.html" class="hide-if-no-user">CodeSheet</a></li>
               <li><a href="faq.html">FAQ</a></li>
             </ul>
           </div>
@@ -114,10 +116,11 @@
 
     <script>
       const $ = s => document.querySelector(s)
+      const $$ = s => document.querySelectorAll(s)
       let user = localStorage.getItem('runmycode')
       if (user) {
-        user = JSON.parse(user)
-        $('#top-menu').insertAdjacentHTML('afterbegin', `<li><a href="dashboard.html">${user.name}</a></li><li><a href="codesheet.html">CodeSheet</a></li>`)
+        $('#user-name').textContent = JSON.parse(user).name || 'Dashboard'
+        Array.from($$('.hide-if-no-user')).forEach(el => el.classList.remove('hide-if-no-user'))
       }
     </script>
   </body>

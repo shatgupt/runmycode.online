@@ -15,8 +15,8 @@ a {
   text-decoration-color: grey;
 }
 
-.hide {
-  display: none;
+.text-center {
+  text-align: center;
 }
 
 .error {
@@ -133,7 +133,6 @@ footer {
 }
 
 .btn-dashboard {
-  margin-top: 23px;
   text-decoration: none;
   display: inline-block;
 }
@@ -179,6 +178,7 @@ footer {
 .CodeMirror {
   height: auto;
   font-size: 14px;
+  text-align: initial;
 }
 
 #language {
@@ -191,4 +191,8 @@ footer {
 #popup-runner {
   display: none;
   padding: 7px 14px;
+}
+
+.hide, .hide-if-no-user {
+  display: none !important;
 }

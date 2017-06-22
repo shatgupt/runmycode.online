@@ -24,6 +24,8 @@
         <div class="grid-cell">
           <div class="menu">
             <ul id="top-menu" class="right">
+              <li><a href="dashboard.html" class="hide-if-no-user" id="user-name">Dashboard</a></li>
+              <li><a href="codesheet.html" class="hide-if-no-user">CodeSheet</a></li>
               <li><a href="faq.html">FAQ</a></li>
             </ul>
           </div>
@@ -34,16 +36,15 @@
         <p>RunMyCode Online is an open source service to run code online from browsers</p>
         <iframe style="border: 1px solid;" width="708" height="398" src="https://www.youtube.com/embed/iwz8n3v7QVY?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
 
-        <div id="actions">
-          <h4 id="action-msg">Get a key by authenticating below. <a href="faq.html#auth">Why?</a></h4>
-          <div class="menu">
-            <ul>
-              <li><input class="btn auth" type="button" value="Google"></li>
-              <li><input class="btn auth" type="button" value="Github"></li>
-              <li><input class="btn auth" type="button" value="Gitlab"></li>
-            </ul>
-          </div>
+        <h4 id="action-msg">Get a key by authenticating below. <a href="faq.html#auth">Why?</a></h4>
+        <div class="menu" id="auth-buttons">
+          <ul>
+            <li><input class="btn auth" type="button" value="Google"></li>
+            <li><input class="btn auth" type="button" value="Github"></li>
+            <li><input class="btn auth" type="button" value="Gitlab"></li>
+          </ul>
         </div>
+        <a href="dashboard.html" class="btn btn-dashboard hide-if-no-user">Go to Dashboard</a>
 
         <p>Run <a href="faq.html#supported-lang">supported code</a> through <a href="codesheet.html">CodeSheet</a> or from <a href="faq.html#supported-sites">supported sites</a> using one of the <a href="faq.html#browser-ext">browser extensions</a>:<br><a href="https://chrome.google.com/webstore/detail/runmycode-online/iidcnkpdmnopbbkdmneglbelcefgfohf">Chrome</a>, <a href="https://addons.mozilla.org/en-US/firefox/addon/runmycode-online">Firefox</a></p>
       </main>
@@ -55,14 +56,18 @@
 
     <script>
       const $ = s => document.querySelector(s)
+      const $$ = s => document.querySelectorAll(s)
       let user = localStorage.getItem('runmycode')
+      const actionMsg = $('#action-msg')
       if (user) {
         user = JSON.parse(user)
-        $('#top-menu').insertAdjacentHTML('afterbegin', `<li><a href="dashboard.html">${user.name}</a></li><li><a href="codesheet.html">CodeSheet</a></li>`)
+        $('#user-name').textContent = user.name || 'Dashboard'
+        Array.from($$('.hide-if-no-user')).forEach(el => el.classList.remove('hide-if-no-user'))
 
-        $('#actions').innerHTML = `<a href="dashboard.html" class="btn btn-dashboard">Dashboard</a>`
+        actionMsg.textContent = user.name ? `You are signed in as ${user.name}` : ''
+        $('#auth-buttons').classList.add('hide')
       } else if (location.search.indexOf('ext-install=1') !== -1) {
-        $('#action-msg').innerHTML = 'Great! Now that you have installed the RunMyCode Online extension, authenticate below to start running code directly from <a href="faq.html#supported-sites">supported sites</a>. <a href="faq.html#auth">Why authenticate?</a>'
+        actionMsg.innerHTML = 'Great! Now that you have installed the RunMyCode Online extension, authenticate below to start running code directly from <a href="faq.html#supported-sites">supported sites</a>. <a href="faq.html#auth">Why authenticate?</a>'
       }
     </script>
     <script src="js/authenticator.js"></script>

@@ -20,8 +20,6 @@ const providerConfig = {
   }
 }
 
-const $$ = s => document.querySelectorAll(s)
-
 // UUID v4 https://gist.github.com/jed/982883#gistcomment-1615714
 const uuid = (a) => {
   return a ? (a ^ crypto.getRandomValues(new Uint8Array(1))[0] % 16 >> a / 4).toString(16) : ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, uuid)
@@ -46,21 +44,24 @@ const getQueryParams = (qs) => {
 }
 
 // handle auth response custom event from redirect page and generate key if everything fine
-const actions = $('#actions')
+const actions = $('#action-msg')
 const generateKey = (res) => {
   popUpResponded = true
   // console.log('got auth.response event:', res)
   res = getQueryParams(res.detail)
 
+  actions.classList.add('error')
   if (!res.error) {
     if (!res.state || !res.code) {
       console.error(`state or code missing in response from ${authConfig.auth_url}:`, res)
-      actions.innerHTML = `<p class="error">${authConfig.provider} did not respond properly. Please try again later.</p>`
+      actions.textContent = `${authConfig.provider} did not respond properly. Please try again later.`
     } else if (res.state !== authConfig.state) {
       console.error(`Response state ${res.state} != stored state ${authConfig.state}. Something fishy might be happening at ${authConfig.auth_url}`)
-      actions.innerHTML = `<p class="error">Something is not correct at ${authConfig.provider} (${authConfig.auth_url}). Please check your account/provider.</p>`
+      actions.textContent = `Something is not correct at ${authConfig.provider} (${authConfig.auth_url}). Please check your account/provider.`
     } else {
-      actions.innerHTML = '<p><strong>Generating API key...</strong></p>'
+      actions.classList.remove('error')
+      actions.textContent = 'Generating API key...'
+      $('#auth-buttons').classList.add('hide')
       // Everything seems ok, make request to generate key
       res.provider = authConfig.provider
       res.scope = authConfig.scope
@@ -79,12 +80,13 @@ const generateKey = (res) => {
       })
       .catch((error) => {
         console.error('keygen Error:', error)
-        actions.innerHTML = `<p class="error">Some error happened. Please try again later.</p>` // what else do I know? :/
+        actions.classList.add('error')
+        actions.textContent = 'Some error happened. Please try again later.' // what else do I know? :/
       })
     }
   } else {
     console.error('Authentication failed:', res)
-    actions.innerHTML = `<p class="error">Error from ${authConfig.provider}: ${res.error_message || res.error_description}</p>`
+    actions.textContent = `Error from ${authConfig.provider}: ${res.error_message || res.error_description}`
   }
 }
 
@@ -133,11 +135,9 @@ const getOAuthCode = (provider) => {
       clearInterval(timer)
       if (!popUpResponded) {
         let response = 'Authentication has been cancelled'
-        if (!popup) {
-          response = 'Authentication popup was blocked'
-        }
-        console.error(response)
-        actions.innerHTML = `<p class="error">${response}`
+        if (!popup) response = 'Authentication popup was blocked'
+        actions.classList.add('error')
+        actions.textContent = response
       }
     }
   }, 500)

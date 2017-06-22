@@ -12,6 +12,7 @@
       "location",
       "crypto",
       "$",
+      "$$",
       "fetch",
       "localStorage",
       "CodeMirror",
