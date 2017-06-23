@@ -6,6 +6,7 @@
   /* set these so Chrome doesn't return 'auto' from getComputedStyle */
   z-index: 999;
   box-shadow: 5px 5px 10px #888;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 #runmycode-runner .panel {
@@ -49,6 +50,10 @@
   margin: 0;
   font-size: 14px;
   font-weight: 600;
+}
+
+#runmycode-runner .panel-title>a {
+  color: inherit;
 }
 
 #runmycode-runner .panel-body {

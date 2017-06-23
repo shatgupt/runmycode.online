@@ -135,13 +135,13 @@ const initRunner = () => {
     <div class="panel panel-default">
       <div id="runmycode-runner-handle" class="panel-heading">
         <button id="runmycode-close-runner" type="button" class="close">x</button>
-        <h3 class="panel-title">Run My Code</h3>
+        <h3 class="panel-title">RunMyCode Online</h3>
       </div>
       <div class="panel-body">
         <button id="runmycode" type="button" class="btn btn-warning btn-block btn-lg">Run</button>
         <div class="panel-group">
           <div class="panel panel-default panel-runner">
-            <div class="panel-heading">
+            <div class="panel-heading" title="Command line input to Code">
               <h4 class="panel-title">Input</h4>
             </div>
             <div class="panel-collapse collapse">
@@ -151,7 +151,7 @@ const initRunner = () => {
             </div>
           </div>
           <div class="panel panel-default panel-runner">
-            <div class="panel-heading">
+            <div class="panel-heading" title="Output from Code">
               <h4 class="panel-title">Output</h4>
             </div>
             <div id="output-panel" class="panel-collapse collapse in">
