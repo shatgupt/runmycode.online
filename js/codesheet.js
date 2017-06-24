@@ -178,7 +178,7 @@ const initRunner = () => {
   const runOutput = $('#runmycode-run-output')
 
   let runnerOffset = { x: 0, y: 0 }
-  runner.style.left = `${(window.innerWidth - runnerWidth)/2}px` // have popup in the center of the screen
+  runner.style.left = `${(window.innerWidth - runnerWidth) / 2}px` // have popup in the center of the screen
 
   runnerCloseBtn.addEventListener('click', (e) => {
     runner.style.display = 'none'
