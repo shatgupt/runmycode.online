@@ -61,7 +61,7 @@ const generateKey = (res) => {
     } else {
       actions.classList.remove('error')
       actions.textContent = 'Generating API key...'
-      $('#auth-buttons').classList.add('hide')
+      // $('#auth-buttons').classList.add('hide')
       // Everything seems ok, make request to generate key
       res.provider = authConfig.provider
       res.scope = authConfig.scope
@@ -72,16 +72,22 @@ const generateKey = (res) => {
       const keygenUrl = keygenApi + '?' + getQueryString(res)
 
       fetch(keygenUrl)
-      .then(r => r.json())
       .then((r) => {
-        // console.log('keygen response', r)
-        localStorage.setItem('runmycode', JSON.stringify(r))
-        location.assign('dashboard.html' + (location.search || '?key-gen=1'))
+        if (!r.ok) throw Error(r.statusText)
+        return r.json()
+      })
+      .then((r) => {
+        if (r.key) {
+          localStorage.setItem('runmycode', JSON.stringify(r))
+          location.assign('dashboard.html' + (location.search || '?key-gen=1'))
+        } else {
+          throw Error(`Key not present in keygen response. Error: ${JSON.stringify(r)}`)
+        }
       })
       .catch((error) => {
-        console.error('keygen Error:', error)
+        console.error('Keygen error:', error)
         actions.classList.add('error')
-        actions.textContent = 'Some error happened. Please try again later.' // what else do I know? :/
+        actions.textContent = JSON.stringify(error)
       })
     }
   } else {
@@ -92,9 +98,7 @@ const generateKey = (res) => {
 
 const openAuthPopUp = (url) => {
   const popup = window.open(url, '_blank', 'resizable=1,scrollbars=1,width=500,height=550')
-  if (popup && popup.focus) {
-    popup.focus()
-  }
+  if (popup && popup.focus) popup.focus()
   return popup
 }
 
