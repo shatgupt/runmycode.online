@@ -266,7 +266,7 @@ const initRunner = () => {
   })
 }
 
-if (user) {
+if (user.key) {
   initEditor()
   initRunner()
 }
