@@ -261,7 +261,7 @@ const initRunner = () => {
     runOutput.value = `Running ${lang} code...`
     $('#output-panel').classList.add('in')
 
-    const url = `${runApi}/${lang}?args=${encodeURIComponent(runInput.value)}`
+    const url = `${runApi}/${lang}?platform=codesheet&args=${encodeURIComponent(runInput.value)}`
     callApi(url, user.key)
   })
 }
