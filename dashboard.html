@@ -47,6 +47,12 @@
         <p id="key"><input id="show-key" class="btn" type="button" value="Show Key"></p>
         <h4 id="usage"><input id="get-usage" class="btn" type="button" value="Get Usage"></h4>
         <p><strong>Note:</strong> Usage data might be <a href="faq.html#usage-delay">delayed</a> by few minutes to hours</p>
+
+        <div class="menu">
+          <ul>
+            <li><input id="logout" class="btn btn-warn" type="button" value="Logout" title="Clears data stored in browser. You won't be able to use CodeSheet. Browser extensions can still be used."></li>
+          </ul>
+        </div>
       </main>
 
       <footer>
@@ -64,6 +70,10 @@
       Array.from($$('.hide-if-no-user')).forEach(el => el.classList.remove('hide-if-no-user'))
 
       $('#show-key').addEventListener('click', e => $('#key').textContent = user.key)
+      $('#logout').addEventListener('click', (e) => {
+        localStorage.removeItem('runmycode')
+        location.assign('/' + location.search)
+      })
 
       const usage = $('#usage')
       const getUsage = $('#get-usage')
