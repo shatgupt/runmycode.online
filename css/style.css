@@ -7,8 +7,13 @@ body {
   font-size: 18px;
   max-width: 800px;
   margin: 0 auto;
-  color: black;
+  color: #37474f;
+  line-height: 1.5;
   font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #263238;
 }
 
 a {
