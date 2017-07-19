@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>CodeSheet</title>
+    <meta name="description" content="Run code online from the browser">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" type="text/css" href="codemirror/lib/codemirror.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/runmycode-panel.css">
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date
+      ga('create', 'UA-100606537-1', 'auto')
+      ga('send', 'pageview')
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  </head>
+  <body>
+    <div class="container">
+      <header class="grid grid--center">
+        <div class="grid-cell u-1of4">
+          <h2><a href="/">RunMyCode</a></h2>
+        </div>
+        <div class="grid-cell">
+          <div class="menu">
+            <ul id="top-menu" class="right">
+              <li><a href="dashboard.html" class="hide-if-no-user" id="user-name">Dashboard</a></li>
+              <li><a href="codesheet.html" class="hide-if-no-user">CodeSheet</a></li>
+              <li><a href="faq.html">FAQ</a></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+  
+      <main>
+        <h3 class="text-center">Screenshots</h3>
+        <div class="screens">
+          <a href="screenshots/github.png"><img src="screenshots/github.png" title="Github"></a>
+          <a href="screenshots/gitlab.png"><img src="screenshots/gitlab.png" title="Gitlab"></a>
+          <a href="screenshots/bitbucket.png"><img src="screenshots/bitbucket.png" title="Bitbucket"></a>
+          <a href="screenshots/gobyexample.png"><img src="screenshots/gobyexample.png" title="GoByExample"></a>
+          <a href="screenshots/github-edit.png"><img src="screenshots/github-edit.png" title="Github Edit"></a>
+          <a href="screenshots/gitlab-edit.png"><img src="screenshots/gitlab-edit.png" title="Gitlab Edit"></a>
+          <a href="screenshots/github-gist.png"><img src="screenshots/github-gist.png" title="Github Gist"></a>
+          <a href="screenshots/gitlab-snippets.png"><img src="screenshots/gitlab-snippets.png" title="Gitlab Snippets"></a>
+          <a href="screenshots/bitbucket-snippets.png"><img src="screenshots/bitbucket-snippets.png" title="Bitbucket Snippets"></a>
+          <a href="screenshots/github-gist-edit.png"><img src="screenshots/github-gist-edit.png" title="Github Gist Edit"></a>
+          <a href="screenshots/bitbucket-snippets-edit.png"><img src="screenshots/bitbucket-snippets-edit.png" title="Bitbucket Snippets Edit"></a>
+          <a href="screenshots/codesheet.png"><img src="screenshots/codesheet.png" title="CodeSheet"></a>
+        </div>
+      </main>
+
+      <footer>
+        <p>&copy; <a target="_blank" href="https://github.com/shatgupt">Shatrughn Gupta</a></p>
+      </footer>
+    </div>
+
+    <script>
+      const $ = s => document.querySelector(s)
+      const $$ = s => document.querySelectorAll(s)
+      let user = localStorage.getItem('runmycode')
+      if (user) {
+        $('#user-name').textContent = JSON.parse(user).name || 'Dashboard'
+        Array.from($$('.hide-if-no-user')).forEach(el => el.classList.remove('hide-if-no-user'))
+      }
+    </script>
+  </body>
+</html>

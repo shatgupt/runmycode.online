@@ -100,6 +100,43 @@ footer {
   flex: none!important;
 }
 
+.screens {
+  max-width: 800px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: stretch;
+  padding: 0;
+}
+
+.screens a {
+  display: block;
+  float: left;
+  flex: 0 0 auto;
+  margin-bottom: 15px;
+}
+
+.screens img {
+  max-width: 98%;
+  height: auto;
+  width: auto;
+}
+
+@media screen and (min-width: 800px) {
+  .screens a {
+    width: calc(100%/3);
+    height: calc(100%/3);
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .screens a {
+    width: 100%;
+    height: 100%;
+  }
+}
+
 .menu {
   width: 100%;
 }

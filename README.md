@@ -2,7 +2,7 @@
 
 > Source for [https://runmycode.online](https://runmycode.online) website
 
-[![RunMyCode Online Introduction](https://img.youtube.com/vi/iwz8n3v7QVY/maxresdefault.jpg)](https://www.youtube.com/watch?v=iwz8n3v7QVY "RunMyCode Online Introduction")
+[![RunMyCode Online Introduction](https://github.com/shatgupt/runmycode-ext/raw/master/screenshot.png?raw=true)](https://www.youtube.com/watch?v=iwz8n3v7QVY "RunMyCode Online Introduction")
 
 ## Browsers Supported
 Latest versions of Chrome, Firefox, Opera.  
