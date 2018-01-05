@@ -103,7 +103,7 @@ const openAuthPopUp = (url) => {
 }
 
 let popUpResponded = false
-const redirectUri = location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '') + '/redirect.html'
+const redirectUri = location.origin + '/redirect.html'
 const authConfig = {
   response_type: 'code',
   redirect_uri: redirectUri
