@@ -7,6 +7,39 @@ const sampleCodes = {
     'const args = process.argv.slice(2)',
     'console.log(args.length + " Args: [" + args.join(", ") + "]")'
   ].join('\n'),
+  c: [
+    '#include <stdio.h>',
+    'int main(int argc, char* argv[]) {',
+    '  printf("Hello World from C!\\n");',
+    '  printf("%d Args: [", argc - 1);',
+    '  int i;',
+    '  for(i = 1; i < argc; ++i)',
+    '    printf("%s ", argv[i]);',
+    '  printf("]\\n");',
+    '  return 0;',
+    '}'
+  ].join('\n'),
+  cpp: [
+    '#include <iostream>',
+    'using namespace std;',
+    'int main(int argc, char **argv) {',
+    '  cout << "Hello World from C++!\\n";',
+    '  cout << (argc - 1) << " Args: [";',
+    '  for (int i = 1; i < argc; ++i)',
+    '    cout << argv[i] << " ";',
+    '  cout << "]\\n";',
+    '  return 0;',
+    '}'
+  ].join('\n'),
+  java: [
+    'import java.util.Arrays;',
+    'class HelloWorld {',
+    '  public static void main(String[] args) {',
+    '    System.out.println("Hello World from Java!");',
+    '    System.out.println(args.length + " Args: " + Arrays.toString(args));',
+    '  }',
+    '}'
+  ].join('\n'),
   python: [
     'import sys',
     'print "Hello World from Python!"',
@@ -60,6 +93,9 @@ let lang = 'nodejs'
 // custom map for CodeMirror
 const langMap = {
   nodejs: 'javascript',
+  c: 'clike',
+  cpp: 'clike',
+  java: 'clike',
   python3: 'python'
 }
 let langToLoad = langMap[lang] || lang
