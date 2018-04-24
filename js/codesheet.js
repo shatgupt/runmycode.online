@@ -73,6 +73,12 @@ const sampleCodes = {
     '  args := os.Args[1:]',
     '  fmt.Println(fmt.Sprintf("%v Args: [%v]", len(args), strings.Join(args, ", ")))',
     '}'
+  ].join('\n'),
+  kotlin: [
+    'fun main(args: Array<String>) {',
+    '  println("Hello World from kotlin!")',
+    '  println("${args.size} Args: " + args.joinToString(prefix = "[", postfix = "]"))',
+    '}'
   ].join('\n')
 }
 
@@ -96,6 +102,7 @@ const langMap = {
   c: 'clike',
   cpp: 'clike',
   java: 'clike',
+  kotlin: 'clike',
   python3: 'python'
 }
 let langToLoad = langMap[lang] || lang
