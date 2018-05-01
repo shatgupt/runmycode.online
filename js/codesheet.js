@@ -79,6 +79,14 @@ const sampleCodes = {
     '  println("Hello World from kotlin!")',
     '  println("${args.size} Args: " + args.joinToString(prefix = "[", postfix = "]"))',
     '}'
+  ].join('\n'),
+  scala: [
+    'object HelloWorld {',
+    '  def main(args: Array[String]): Unit = {',
+    '    println("Hello World from scala!")',
+    '    println(s"${args.length} Args: " + args.mkString("[", ", ", "]"))',
+    '  }',
+    '}'
   ].join('\n')
 }
 
@@ -103,6 +111,7 @@ const langMap = {
   cpp: 'clike',
   java: 'clike',
   kotlin: 'clike',
+  scala: 'clike',
   python3: 'python'
 }
 let langToLoad = langMap[lang] || lang
