@@ -43,6 +43,7 @@
 
         <h4 id="after-ext-install" class="hide">Great! Now that you have installed the extension and have the key, you can start running code directly from <a href="faq.html#supported-sites">supported sites</a>. For example, you can now run <a href="https://github.com/shatgupt/runmycode-test/blob/master/ruby.rb">this Ruby code</a> directly from Github. Look for the Run button.</h4>
 
+        <p id="user-email"></p>
         <p>Your API Key</p>
         <p id="key"><input id="show-key" class="btn" type="button" value="Show Key"></p>
         <h4 id="usage"><input id="get-usage" class="btn" type="button" value="Get Usage"></h4>
@@ -67,6 +68,7 @@
       user = JSON.parse(user)
       // User name instead of simple Dashboard
       $('#user-name').textContent = user.name || 'Dashboard'
+      $('#user-email').textContent = user.email
       Array.from($$('.hide-if-no-user')).forEach(el => el.classList.remove('hide-if-no-user'))
 
       $('#show-key').addEventListener('click', e => $('#key').textContent = user.key)
