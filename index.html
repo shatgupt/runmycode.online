@@ -72,7 +72,7 @@
         $('#user-name').textContent = user.name || 'Dashboard'
         Array.from($$('.hide-if-no-user')).forEach(el => el.classList.remove('hide-if-no-user'))
 
-        actionMsg.textContent = user.name ? `You are signed in as ${user.name}` : ''
+        actionMsg.textContent = `You are signed in as ${user.name || user.email}`
         $('#auth-buttons').classList.add('hide')
       } else if (location.search.indexOf('ext-install=1') !== -1) {
         actionMsg.innerHTML = 'Great! Now that you have installed the RunMyCode Online extension, authenticate below to start running code directly from <a href="faq.html#supported-sites">supported sites</a>. <a href="faq.html#auth">Why authenticate?</a>'
