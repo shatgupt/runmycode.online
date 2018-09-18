@@ -46,8 +46,6 @@
         <p id="user-email"></p>
         <p>Your API Key</p>
         <p id="key"><input id="show-key" class="btn" type="button" value="Show Key"></p>
-        <h4 id="usage"><input id="get-usage" class="btn" type="button" value="Get Usage"></h4>
-        <p><strong>Note:</strong> Usage data might be <a href="faq.html#usage-delay">delayed</a> by few minutes to hours</p>
 
         <div class="menu">
           <ul>
@@ -77,54 +75,12 @@
         location.assign('/' + location.search)
       })
 
-      const usage = $('#usage')
-      const getUsage = $('#get-usage')
       if (location.search.indexOf('ext-install=1') !== -1) {
         $('#after-ext-install').classList.remove('hide')
       } else if (location.search.indexOf('key-gen=1') !== -1) {
         // disable usage on first time till 30s to avoid getting 403 from APIG
         $('#after-key-gen').classList.remove('hide')
-        getUsage.disabled = true
-        getUsage.setAttribute('title', 'Usage available only after 30 seconds of signup')
-        setTimeout(() => {
-          getUsage.disabled = false
-          getUsage.setAttribute('title', '')
-        }, 30000)
       }
-
-      const usageUrl = `https://api.runmycode.online/keyusage?id=${user.id}&name=${encodeURIComponent(user.email)}`
-      getUsage.addEventListener('click', (e) => {
-        usage.classList.remove('error')
-        usage.textContent = 'Getting Usage...'
-        fetch(usageUrl, {
-          headers: {'x-api-key': user.key}
-        })
-        .then(res => res.json())
-        .then(resp => {
-          if (!resp.error) {
-            const usageArr = resp.usage
-            if (usageArr.length !== 0) {
-              // Usage format is monthlyUsage[dailyUsage[usedThatDay, totalRemaining]]
-              let totalUsage = 0
-              let remaining = usageArr[usageArr.length-1][1]
-              for(let day of usageArr) totalUsage += day[0]
-              usage.textContent = `You have used ${totalUsage} runs of your monthly ${totalUsage+remaining} limit`
-            } else {
-              console.warn('empty usage response', resp)
-              usage.innerHTML = 'No usage data available yet. <a href="codesheet.html">May be run some code?</a>'
-            }
-          } else {
-            console.error('Error:', resp)
-            usage.classList.add('error')
-            usage.textContent = `Error: ${resp.error}`
-          }
-        })
-        .catch((error) => {
-          console.error('Error:', error)
-          usage.classList.add('error')
-          usage.textContent = 'Some error happened. Please try again later.' // what else do I know? :/
-        })
-      })
     </script>
   </body>
 </html>
