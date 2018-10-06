@@ -193,12 +193,12 @@ const initRunner = () => {
         <button id="runmycode" type="button" class="btn btn-warning btn-block btn-lg">Run</button>
         <div class="panel-group">
           <div class="panel panel-default panel-runner">
-            <div class="panel-heading" title="Command line input to Code">
+            <div class="panel-heading" title="STDIN to Code">
               <h4 class="panel-title">Input</h4>
             </div>
             <div class="panel-collapse collapse">
               <div class="panel-body">
-                <input id="runmycode-run-input" placeholder="Command line input to Code" title="Special shell characters like & should be quoted" type="text">
+                <textarea id="runmycode-run-input" placeholder="STDIN to Code" title="STDIN to Code"></textarea>
               </div>
             </div>
           </div>

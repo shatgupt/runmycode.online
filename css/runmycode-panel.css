@@ -152,7 +152,7 @@
 }
 
 #runmycode-run-input {
-  height: 40px;
+  min-height: 46px;
 }
 
 #runmycode-run-output {
