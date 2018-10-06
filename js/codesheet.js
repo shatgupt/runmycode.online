@@ -3,19 +3,12 @@
 const runApi = 'https://api.runmycode.online/run'
 const sampleCodes = {
   nodejs: [
-    'console.log("Hello World from Nodejs!")',
-    'const args = process.argv.slice(2)',
-    'console.log(args.length + " Args: [" + args.join(", ") + "]")'
+    'console.log("Hello World from Nodejs!")'
   ].join('\n'),
   c: [
     '#include <stdio.h>',
     'int main(int argc, char* argv[]) {',
     '  printf("Hello World from C!\\n");',
-    '  printf("%d Args: [", argc - 1);',
-    '  int i;',
-    '  for(i = 1; i < argc; ++i)',
-    '    printf("%s ", argv[i]);',
-    '  printf("]\\n");',
     '  return 0;',
     '}'
   ].join('\n'),
@@ -24,10 +17,6 @@ const sampleCodes = {
     'using namespace std;',
     'int main(int argc, char **argv) {',
     '  cout << "Hello World from C++!\\n";',
-    '  cout << (argc - 1) << " Args: [";',
-    '  for (int i = 1; i < argc; ++i)',
-    '    cout << argv[i] << " ";',
-    '  cout << "]\\n";',
     '  return 0;',
     '}'
   ].join('\n'),
@@ -36,55 +25,39 @@ const sampleCodes = {
     'class HelloWorld {',
     '  public static void main(String[] args) {',
     '    System.out.println("Hello World from Java!");',
-    '    System.out.println(args.length + " Args: " + Arrays.toString(args));',
     '  }',
     '}'
   ].join('\n'),
   python: [
-    'import sys',
-    'print "Hello World from Python!"',
-    'args = sys.argv[1:]',
-    'print str(len(args)) + " Args: [" + ", ".join(args) + "]"'
+    'print "Hello World from Python!"'
   ].join('\n'),
   python3: [
-    'import sys',
-    'print("Hello World from Python3!")',
-    'args = sys.argv[1:]',
-    'print(str(len(args)) + " Args: [" + ", ".join(args) + "]")'
+    'print("Hello World from Python3!")'
   ].join('\n'),
   ruby: [
-    'puts("Hello World from Ruby!")',
-    'puts("#{ARGV.length} Args: [#{ARGV.join(", ")}]")'
+    'puts("Hello World from Ruby!")'
   ].join('\n'),
   php: [
     '<?php',
     '  echo "Hello World from PHP!\\n";',
-    '  $args = array_slice($argv, 1);',
-    '  echo count($args), " Args: [", implode(", ", $args), "]\\n";',
     '?>'
   ].join('\n'),
   go: [
     'package main',
-    'import "os"',
     'import "fmt"',
-    'import "strings"',
     'func main() {',
     '  fmt.Println("Hello World from Go!")',
-    '  args := os.Args[1:]',
-    '  fmt.Println(fmt.Sprintf("%v Args: [%v]", len(args), strings.Join(args, ", ")))',
     '}'
   ].join('\n'),
   kotlin: [
     'fun main(args: Array<String>) {',
     '  println("Hello World from kotlin!")',
-    '  println("${args.size} Args: " + args.joinToString(prefix = "[", postfix = "]"))',
     '}'
   ].join('\n'),
   scala: [
     'object HelloWorld {',
     '  def main(args: Array[String]): Unit = {',
     '    println("Hello World from scala!")',
-    '    println(s"${args.length} Args: " + args.mkString("[", ", ", "]"))',
     '  }',
     '}'
   ].join('\n')
