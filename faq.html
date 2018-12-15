@@ -62,7 +62,7 @@
           <li>No internet access from code.</li>
         </ul>
 
-        <h4 id="browser-ext"><a href="#browser-ext">#</a> Which browser extensions are available?</h4>
+        <h4 id="browser-ext"><a href="#browser-ext">#</a> What browser extensions are available?</h4>
         <ul>
           <li><a href="https://chrome.google.com/webstore/detail/runmycode-online/iidcnkpdmnopbbkdmneglbelcefgfohf">Google Chrome</a></li>
           <li><a href="https://addons.mozilla.org/en-US/firefox/addon/runmycode-online">Mozilla Firefox</a></li>
@@ -71,9 +71,9 @@
 
         <h4 id="config-ext"><a href="#config-ext">#</a> How do I configure the extension?</h4>
         <p>You don't need to. On install, the extension will redirect to RunMyCode Online dashboard to auto-configure itself. If you are already authenticated, then you are done. Otherwise you will be prompted to authenticate following which extension will auto-configure itself.<br>
-        If you are still facing issue, follow this YouTube video: <a href="https://www.youtube.com/watch?v=EoE7d9cvVVY">Configuring RunMyCode Online Extension.</a></p>
+        If you are still facing issues, follow this YouTube video: <a href="https://www.youtube.com/watch?v=EoE7d9cvVVY">Configuring RunMyCode Online Extension.</a></p>
 
-        <h4 id="supported-lang"><a href="#supported-lang">#</a> What are the supported languages?</h4>
+        <h4 id="supported-lang"><a href="#supported-lang">#</a> What languages are supported?</h4>
         <ol>
           <li>C (GCC 7.2)</li>
           <li>C++ (GCC 7.2)</li>
@@ -88,17 +88,30 @@
           <li>Scala</li>
         </ol>
 
-        <h4 id="supported-sites"><a href="#supported-sites">#</a> What are the supported sites for browser extensions?</h4>
+        <h4 id="supported-sites"><a href="#supported-sites">#</a> What websites are supported by the browser extensions?</h4>
         <p>All the supported version control sites have support for running standalone code from view, edit and new file pages.</p>
         <ol>
           <li><a href="https://github.com/shatgupt/runmycode-test/blob/master/ruby.rb">GitHub</a></li>
           <li><a href="https://gitlab.com/shatgupt/runmycode-test/blob/master/ruby.rb">GitLab</a></li>
           <li><a href="https://bitbucket.org/shatgupt/runmycode-test/src/master/ruby.rb">BitBucket</a></li>
-          <li><a href="https://gobyexample.com/hello-world">Go by Example</a></li>
           <li><a href="https://gist.github.com/shatgupt/b76ebbf67c6a38d0decb686ff230dd04">GitHub Gist</a></li>
           <li><a href="https://gitlab.com/snippets/1664532">GitLab Snippets</a></li>
           <li><a href="https://bitbucket.org/snippets/shatgupt/jykE9">Bitbucket Snippets</a></li>
+          <li><a href="https://gobyexample.com/hello-world">Go by Example</a></li>
+          <li><a href="http://xahlee.info/php/list_basics.html">Xahlee</a></li>
+          <li><a href="http://www.learntosolveit.com/ruby/forloop.html">Learn To Solve It</a></li>
+          <li><a href="https://www.tutorialspoint.com/python3/python_basic_syntax.htm">Tutorials Point</a></li>
         </ol>
+
+        <h4 id="permissions"><a href="#permissions">#</a> What permissions are requested by the browser extensions?</h4>
+        <p>Starting with v2, RMCO extensions only ask permission for GitHub by default. All other websites are optional and can be allowed on demand. Check your URL/tool bar for a blue RMCO icon on supported sites.</p>
+        <ul>
+          <li>Optional permissions for the above supported websites to allow extension to run code directly from there.</li>
+          <li><i>runmycode.online</i> - To auto-configure the extension.</li>
+          <li><i>api.runmycode.online</i> - To compile and run code.</li>
+          <li><i>tabs</i> - For detecting url change and page loading complete for single page apps like GitHub, BitBucket.</li>
+          <li><i>storage</i> - To store API URL and Key as extension options.</li>
+        </ul>
 
         <h4 id="privacy-policy"><a href="#privacy-policy">#</a> Privacy Policy OR How is my data used/stored?</h4>
         <ul>
@@ -124,7 +137,7 @@
         </ul>
 
         <h4 id="contact"><a href="#contact">#</a> How do I contact you?</h4>
-        <p>Please email to <a href="mailto:support@runmycode.online">support@runmycode.online</a></p>
+        <p>Please email to <a href="mailto:support@runmycode.online">support@runmycode.online</a>.</p>
       </main>
 
       <footer>
