@@ -3,60 +3,104 @@
 const runApi = 'https://api.runmycode.online/run'
 const sampleCodes = {
   nodejs: [
-    'console.log("Hello World from Nodejs!")'
+    'console.log("Hello World from Nodejs!")',
+    'console.log(require("fs").readFileSync(0).toString())'
   ].join('\n'),
   c: [
     '#include <stdio.h>',
+    '#include <stdlib.h>',
+    '',
     'int main(int argc, char* argv[]) {',
-    '  printf("Hello World from C!\\n");',
+    '  puts("Hello World from C!");',
+    '  char *buffer = NULL;',
+    '  long unsigned int len;',
+    '  getline(&buffer, &len, stdin);',
+    '  printf("%s\\n", buffer);',
+    '  free(buffer);',
     '  return 0;',
     '}'
   ].join('\n'),
   cpp: [
     '#include <iostream>',
     'using namespace std;',
+    '',
     'int main(int argc, char **argv) {',
     '  cout << "Hello World from C++!\\n";',
+    '  string mystr;',
+    '  getline(cin, mystr);',
+    '  cout << mystr << "\\n";',
     '  return 0;',
     '}'
   ].join('\n'),
   java: [
+    '/*',
+    '  Make sure the class is NOT public.',
+    '  This program won\'t run properly without an input. Try with: abc',
+    '*/',
+    'import java.util.Scanner;',
+    '',
     'class HelloWorld {',
     '  public static void main(String[] args) {',
     '    System.out.println("Hello World from Java!");',
+    '    Scanner scan = new Scanner(System.in);',
+    '    System.out.println(scan.nextLine());',
     '  }',
     '}'
   ].join('\n'),
   python: [
-    'print "Hello World from Python!"'
+    'import sys',
+    '',
+    'print "Hello World from Python!"',
+    'for line in sys.stdin:',
+    '    print line.rstrip()'
   ].join('\n'),
   python3: [
-    'print("Hello World from Python3!")'
+    'import sys',
+    '',
+    'print("Hello World from Python3!")',
+    'for line in sys.stdin:',
+    '    print(line.rstrip())'
   ].join('\n'),
   ruby: [
-    'puts("Hello World from Ruby!")'
+    'puts("Hello World from Ruby!")',
+    'puts $stdin.read'
   ].join('\n'),
   php: [
     '<?php',
     '  echo "Hello World from PHP!\\n";',
+    '  echo stream_get_contents(STDIN);',
     '?>'
   ].join('\n'),
   go: [
     'package main',
+    'import "os"',
     'import "fmt"',
+    'import "bufio"',
+    '',
     'func main() {',
     '  fmt.Println("Hello World from Go!")',
+    '  reader := bufio.NewReader(os.Stdin)',
+    "  text, _ := reader.ReadString('\\n')",
+    '  fmt.Print(text)',
     '}'
   ].join('\n'),
   kotlin: [
+    '/*',
+    '  This program won\'t run properly without an input. Try with: abc',
+    '*/',
     'fun main(args: Array<String>) {',
-    '  println("Hello World from kotlin!")',
+    '  println("Hello World from Kotlin!")',
+    '  println(readLine()!!)',
     '}'
   ].join('\n'),
   scala: [
+    '/*',
+    '  This program won\'t run properly without an input. Try with: abc',
+    '*/',
     'object HelloWorld {',
     '  def main(args: Array[String]): Unit = {',
-    '    println("Hello World from scala!")',
+    '    println("Hello World from Scala!")',
+    '    println(scala.io.StdIn.readLine())',
     '  }',
     '}'
   ].join('\n')
